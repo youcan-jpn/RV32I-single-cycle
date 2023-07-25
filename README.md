@@ -9,7 +9,7 @@ $ vvp a.out
 - R-type
   - `add`, `sub`, `and`, `or`, `slt`
 - I-type
-  - `lw`, `sw`, `addi`
+  - `lw`, `sw`, `addi`, `andi`, `ori`
 - B-type
   - `beq`
 - J-type
@@ -19,6 +19,6 @@ $ vvp a.out
 - R-type
   - `sll`, `sltu`, `xor`, `srl`, `sra`
 - I-type
-  - `lb`, `lh`, `lbu`, `lhu`, `slli`, `slti`, `sltiu`, `xori`, `srli`, `srai`, `ori`, `andi`, `jalr`
+  - `lb`, `lh`, `lbu`, `lhu`, `slli`, `slti`, `sltiu`, `xori`, `srli`, `srai`, , `jalr`
 - U-type
   - `auipc`, `lui`
