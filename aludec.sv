@@ -1,3 +1,5 @@
+`include "defs.sv"
+
 module aludec(input  logic       opb5,
               input  logic [2:0] funct3,
               input  logic       funct7b5,
@@ -12,14 +14,16 @@ module aludec(input  logic       opb5,
             2'b01: ALUControl = 3'b001; // subtraction
             default: case(funct3) // R-type or I-type ALU
                          3'b000: if (RtypeSub)
-                                     ALUControl = 3'b001; // sub
+                                     ALUControl = `ALU_SUB; // sub
                                  else
-                                     ALUControl = 3'b000; // add, addi
-                         3'b010:     ALUControl = 3'b101; // slt, slti
-                         3'b100:     ALUControl = 3'b100; // xor, xori
-                         3'b110:     ALUControl = 3'b011; // or, ori
-                         3'b111:     ALUControl = 3'b010; // and, andi
-                         default:    ALUControl = 3'bxxx; // ???
+                                     ALUControl = `ALU_ADD; // add, addi
+                         3'b001:     ALUControl = `ALU_SL;  // sll, slli
+                         3'b010:     ALUControl = `ALU_SLT; // slt, slti
+                         3'b100:     ALUControl = `ALU_XOR; // xor, xori
+                         3'b101:     ALUControl = `ALU_SR;  // srl, srli, sra, srai
+                         3'b110:     ALUControl = `ALU_OR;  // or, ori
+                         3'b111:     ALUControl = `ALU_AND; // and, andi
+                         default:    ALUControl = `ALU_DCR; // ???
                      endcase
         endcase
     end

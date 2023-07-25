@@ -31,6 +31,11 @@ module datapath(input  logic        clk, reset,
 
     // ALU logic
     mux2 #(32)  srcbmux(WriteData, ImmExt, ALUSrc, SrcB);
-    alu         alu(SrcA, SrcB, ALUControl, ALUResult, Zero);
+    alu         alu(.src1(SrcA),
+                    .src2(SrcB),
+                    .alu_ctrl(ALUControl),
+                    .arith(funct7b5),
+                    .alu_out(ALUResult),
+                    .zero(Zero));
     mux3 #(32)  resultmux(ALUResult, ReadData, PCPlus4, ResultSrc, Result);
 endmodule
