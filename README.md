@@ -19,6 +19,14 @@ $ vvp a.out
 - R-type
   - `sll`, `sltu`, `xor`, `srl`, `sra`
 - I-type
-  - `lb`, `lh`, `lbu`, `lhu`, `slli`, `slti`, `sltiu`, `xori`, `srli`, `srai`, , `jalr`
+  - `lb`, `lh`, `lbu`, `lhu`, `slli`, `slti`, `sltiu`, `xori`, `srli`, `srai`, `jalr`
 - U-type
   - `auipc`, `lui`
+
+
+## About testbench
+`riscvtest.txt` is based on Harris&Harris.
+Some instructions are added.
+
+`sw  x2, 0x20(x3)` has been transformed into `sw  x2, 0x20(x0)` because x3 has an instruction address which would be change by adding testbench lines.
+

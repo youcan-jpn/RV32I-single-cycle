@@ -10,7 +10,7 @@ module maindec(input  logic [6:0] op,
     assign {RegWrite, ImmSrc, ALUSrc, MemWrite,
             ResultSrc, Branch, ALUOp, Jump} = controls;
 
-    always_comb
+    always_comb begin
         case(op)
             // RegWrite_ImmSrc_ALUSrc_MemWrite_ResultSrc_Branch_ALUOp_Jump
             // ALUSrc=1でImmExtを採用、ALUSrc=0でWriteDataを採用 (datapath.svのSrcB)
@@ -23,4 +23,5 @@ module maindec(input  logic [6:0] op,
             7'b1101111: controls = 11'b1_11_0_0_10_0_00_1; // jal
             default:    controls = 11'bx_xx_x_x_xx_x_xx_x; // ???
         endcase
+    end
 endmodule
