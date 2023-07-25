@@ -8,13 +8,16 @@ module riscvsingle(input  logic        clk, reset,
     logic [1:0] ResultSrc, ImmSrc;
     logic [2:0] ALUControl;
 
-    controller c(Instr[6:0], Instr[14:12], Instr[30], Zero,
-                 ResultSrc, MemWrite, PCSrc,
-                 ALUSrc, RegWrite, Jump,
-                 ImmSrc, ALUControl);
-    datapath dp(clk, reset, ResultSrc, PCSrc,
-                ALUSrc, RegWrite,
-                ImmSrc, ALUControl,
-                Zero, PC, Instr,
-                ALUResult, WriteData, ReadData);
+    controller c(.op(Instr[6:0]), .funct3(Instr[14:12]),
+                 .funct7b5(Instr[30]), .Zero(Zero),
+                 .ResultSrc(ResultSrc), .MemWrite(MemWrite), .PCSrc(PCSrc),
+                 .ALUSrc(ALUSrc), .RegWrite(RegWrite), .Jump(Jump),
+                 .ImmSrc(ImmSrc), .ALUControl(ALUControl));
+    datapath dp(.clk(clk), .reset(reset),
+                .ResultSrc(ResultSrc), .PCSrc(PCSrc),
+                .ALUSrc(ALUSrc), .RegWrite(RegWrite),
+                .ImmSrc(ImmSrc), .ALUControl(ALUControl),
+                .Zero(Zero), .PC(PC), .Instr(Instr),
+                .ALUResult(ALUResult), .WriteData(WriteData),
+                .ReadData(ReadData));
 endmodule

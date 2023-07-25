@@ -21,8 +21,13 @@ module datapath(input  logic        clk, reset,
     mux2 #(32)  pcmux(PCPlus4, PCTarget, PCSrc, PCNext);
 
     // register file logic
-    regfile     rf(clk, RegWrite, Instr[19:15], Instr[24:20], Instr[11:7], Result, SrcA, WriteData);
-    extend      ext(Instr[31:7], ImmSrc, ImmExt);
+    regfile     rf(.clk(clk), .we3(RegWrite),
+                   .a1(Instr[19:15]), .a2(Instr[24:20]),
+                   .a3(Instr[11:7]), .wd3(Result),
+                   .rd1(SrcA), .rd2(WriteData));
+    extend      ext(.instr(Instr[31:7]),
+                    .immsrc(ImmSrc),
+                    .immext(ImmExt));
 
     // ALU logic
     mux2 #(32)  srcbmux(WriteData, ImmExt, ALUSrc, SrcB);
