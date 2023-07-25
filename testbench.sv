@@ -25,7 +25,11 @@ module testbench();
                 if (DataAdr === 32 & WriteData === 25) begin
                     $display("Simulation succeeded");
                     $stop;
+                end else if (DataAdr === 96 & WriteData === 7) begin
+                    $display("Pass checkpoint-1");
                 end else if (DataAdr !== 96) begin
+                    $display("DataAdr: %d", DataAdr);
+                    $display("WriteData: %d", WriteData);
                     $display("Simulation failed");
                     $stop;
                 end

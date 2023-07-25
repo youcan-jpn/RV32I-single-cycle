@@ -26,7 +26,13 @@ $ vvp a.out
 
 ## About testbench
 `riscvtest.txt` is based on Harris&Harris.
-Some instructions are added.
+Some instructions are added / modified.
 
-`sw  x2, 0x20(x3)` has been transformed into `sw  x2, 0x20(x0)` because x3 has an instruction address which would be change by adding testbench lines.
+- `sw  x2, 0x20(x3)` has been transformed into `sw  x2, 0x20(x0)` because x3 has an instruction address which would be change by adding testbench lines.
+- `ori x4, x4, 8` and `xori x4, x4, 8` are added after `or x4, x7, x2` to test `ori` and `xori`
+- `slli x7, x7, 2`, `srli x7, x7, 1`, and `srai x7, x7, 1` are added after `addi x7, x3, -9` to test `slli`, `srli`, and `srai`
+- 
 
+## References
+- [Digital Design and Computer Architecture RISC-V Edition](https://www.amazon.co.jp/Digital-Design-Computer-Architecture-RISC-V/dp/0128200642)
+- [計算機構成 第6回 RV32Iのマイクロアーキテクチャ](https://www.am.ics.keio.ac.jp/parthenon/rvmicro.pdf)
