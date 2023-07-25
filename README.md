@@ -7,9 +7,9 @@ $ vvp a.out
 
 ## Implemented Instructions
 - R-type
-  - `add`, `sub`, `and`, `or`, `slt`
+  - `add`, `sub`, `and`, `or`, `slt`, `xor`
 - I-type
-  - `lw`, `sw`, `addi`, `andi`, `ori`
+  - `lw`, `sw`, `addi`, `andi`, `ori`, `xori`
 - B-type
   - `beq`
 - J-type
@@ -17,9 +17,9 @@ $ vvp a.out
 
 ## Unimplement Instructions
 - R-type
-  - `sll`, `sltu`, `xor`, `srl`, `sra`
+  - `sll`, `sltu`, `srl`, `sra`
 - I-type
-  - `lb`, `lh`, `lbu`, `lhu`, `slli`, `slti`, `sltiu`, `xori`, `srli`, `srai`, `jalr`
+  - `lb`, `lh`, `lbu`, `lhu`, `slli`, `slti`, `sltiu`, `srli`, `srai`, `jalr`
 - U-type
   - `auipc`, `lui`
 

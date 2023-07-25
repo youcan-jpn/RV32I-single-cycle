@@ -13,6 +13,7 @@ module alu (
             3'b001:  alu_out = sub;
             3'b010:  alu_out = src1 & src2;
             3'b011:  alu_out = src1 | src2;
+            3'b100:  alu_out = src1 ^ src2;
             3'b101:  alu_out = {{31{1'b0}}, sub[31]};
             default: alu_out = 32'bx;
         endcase
