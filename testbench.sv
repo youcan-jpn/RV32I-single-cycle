@@ -13,6 +13,10 @@ module testbench();
         reset <= 1; # 22; reset <= 0;
     end
 
+    initial begin
+        $dumpfile("processor.vcd");
+        $dumpvars(0, testbench);
+    end
     // generate clock to sequence tests
     always begin
         clk <= 1; # 5; clk <= 0; # 5;
@@ -27,6 +31,11 @@ module testbench();
                     $stop;
                 end else if (DataAdr === 96 & WriteData === 7) begin
                     $display("Pass checkpoint-1");
+                end else if (DataAdr === 96 & WriteData !== 7) begin
+                    $display("DataAdr: %d", DataAdr);
+                    $display("WriteData: %d", WriteData);
+                    $display("Simulation failed at sw x7");
+                    // $stop;
                 end else if (DataAdr !== 96) begin
                     $display("DataAdr: %d", DataAdr);
                     $display("WriteData: %d", WriteData);

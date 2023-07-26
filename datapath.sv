@@ -1,9 +1,9 @@
 module datapath(input  logic        clk, reset,
                 input  logic [1:0]  ResultSrc,
-                input  logic        PCSrc, ALUSrc,
+                input  logic        Branch, ALUSrc,
                 input  logic        RegWrite,
                 input  logic [1:0]  ImmSrc,
-                input  logic [2:0]  ALUControl,
+                input  logic [2:0]  funct3,
                 output logic        Zero,
                 output logic [31:0] PC,
                 input  logic [31:0] Instr,
@@ -13,6 +13,10 @@ module datapath(input  logic        clk, reset,
     logic [31:0] ImmExt;
     logic [31:0] SrcA, SrcB;
     logic [31:0] Result;
+    logic        PCSrc;
+
+    // branch logic
+    bcomp       bc(.a(SrcA), .b(SrcB), .comp_ctrl(funct3), .Branch(Branch), .PCSrc);
 
     // next PC logic
     flopr #(32) pcreg(clk, reset, PCNext, PC);
@@ -33,8 +37,9 @@ module datapath(input  logic        clk, reset,
     mux2 #(32)  srcbmux(WriteData, ImmExt, ALUSrc, SrcB);
     alu         alu(.src1(SrcA),
                     .src2(SrcB),
-                    .alu_ctrl(ALUControl),
-                    .arith(funct7b5),
+                    .alu_ctrl(funct3),
+                    .ext(Instr[30]),
+                    .addcom(ALUSrc),
                     .alu_out(ALUResult),
                     .zero(Zero));
     mux3 #(32)  resultmux(ALUResult, ReadData, PCPlus4, ResultSrc, Result);
