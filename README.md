@@ -64,6 +64,8 @@ Some instructions are added / modified.
   - funct3をそのままALUの制御信号にできそう
   - Harris&HarrisではALUControlという信号名で置き換えているがfunct3のままの方が分岐命令のときもわかりやすい
 
+## メモ
+### 7/26
 
 ```txt
 00500113
@@ -127,3 +129,7 @@ A8322A23  // sw x4, 84(x3)   # [96] = 1
 00210063
 ```
 Converterを使ってテストの行を足したが信用していいのかわからない。
+
+### 7/25
+- 訳が分からなくなったのでALUの制御信号を4bitsにした
+- jal, ori, xori, slli, srai, srliがうまく動いていなさそうだったがaddcomを消したらjal以外は動くようになった
