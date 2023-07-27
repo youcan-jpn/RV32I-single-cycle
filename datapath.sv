@@ -1,6 +1,6 @@
 module datapath(input  logic        clk, reset,
                 input  logic [1:0]  ResultSrc,
-                input  logic        Branch, ALUSrc,
+                input  logic        Branch, Jump, ALUSrc,
                 input  logic        RegWrite,
                 input  logic [1:0]  ImmSrc,
                 input  logic [3:0]  ALUControl,
@@ -19,7 +19,7 @@ module datapath(input  logic        clk, reset,
     assign funct3 = Instr[14:12];
 
     // branch logic
-    bcomp       bc(.a(SrcA), .b(SrcB), .comp_ctrl(funct3), .Branch(Branch), .PCSrc);
+    bcomp       bc(.a(SrcA), .b(SrcB), .comp_ctrl(funct3), .Branch(Branch), .Jump, .PCSrc);
 
     // next PC logic
     flopr #(32) pcreg(clk, reset, PCNext, PC);

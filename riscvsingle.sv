@@ -14,7 +14,7 @@ module riscvsingle(input  logic        clk, reset,
                  .ALUSrc(ALUSrc), .RegWrite(RegWrite), .Jump(Jump),
                  .ImmSrc(ImmSrc), .ALUControl(ALUControl));
     datapath  dp(.clk(clk), .reset(reset),
-                 .ResultSrc(ResultSrc), .Branch(Branch),
+                 .ResultSrc(ResultSrc), .Branch(Branch), .Jump,
                  .ALUSrc(ALUSrc), .RegWrite(RegWrite),
                  .ImmSrc(ImmSrc), .ALUControl(ALUControl),
                  .Zero(Zero), .PC(PC), .Instr(Instr),

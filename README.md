@@ -132,4 +132,5 @@ Converterを使ってテストの行を足したが信用していいのかわ�
 
 ### 7/25
 - 訳が分からなくなったのでALUの制御信号を4bitsにした
-- jal, ori, xori, slli, srai, srliがうまく動いていなさそうだったがaddcomを消したらjal以外は動くようになった
+- jal, ori, xori, slli, srai, srliがうまく動いていなさそうだったがaddcomを消したらjal以外は動くようになったっぽい
+- jalもJump信号をPCSrcまで届けるように直したら動いた
