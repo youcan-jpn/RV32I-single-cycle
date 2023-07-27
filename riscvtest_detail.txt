@@ -1,0 +1,30 @@
+00500113  // addi  x2, x0, 5         # x2 = 5
+00C00193  // addi  x3, x0, 12        # x3 = 12
+FF718393  // addi  x7, x3, -9        # x7 = 12-9 = 3
+0023E233  // or    x4, x7, x2        # x4 = 3|5 = 7
+00826213  // ori   x4, x4, 8         # x4 = 7|8 = 15              (added)
+00824213  // xori  x4, x4, 8         # x4 = 15^8 = 7              (added)
+0041F2B3  // and   x5, x3, x4        # x5 = 12&7 = 4
+004282B3  // add   x5, x5, x4        # x5 = 4+7 = 11
+02728863  // beq   x5, x7, (->end)   # shouldn't be taken
+0041A233  // slt   x4, x3, x4        # x4 = (12<7) = 0
+00020463  // beq   x4, x0, (+8)      # should be taken
+00000293  // addi  x5, x0, 0         # shouldn't be taken
+0023A233  // slt   x4, x7, x2        # x4 = (3<5) = 1
+005203B3  // add   x7, x4, x5        # x7 = 1+11 = 12
+402383B3  // sub   x7, x7, x2        # x7 = 12-5 = 7
+00239393  // slli  x7, x7, 2         # x7 = 7<<2 = 28             (added)
+0013D393  // srli  x7, x7, 1         # x7 = 28>>1 = 14            (added)
+4013D393  // srai  x7, x7, 1         # x7 = 14>>>1 = 7            (added)
+00D3A393  // slti  x7, x7, 13        # x7 = (7<13) = 1            (added)
+FFF2B113  // sltiu x2, x5, -1        # x2 = (11<unsigned(-1)) = 1 (added)
+00410393  // addi  x7, x2, 4         # x7 = 1+4 = 5               (added)
+00238393  // addi  x7, x7, 2         # x7 = 5+2 = 7               (added)
+0471AA23  // sw    x7, 84(x3)        # [96] = 7
+06002103  // lw    x2, 96(x0)        # x2 = [96] = 7
+005104B3  // add   x9, x2, x5        # x9 = 7+11 = 18
+008001EF  // jal   x3, end           # jump to end, x3 = PC+4
+00100113  // addi  x2, x0, 1         # shouldn't execute
+00910133  // add   x2, x2, x9        # (end) x2 = 7+18 = 25
+02202023  // sw    x2, 32(x0)        # [32] = 25
+00210063  // beq   x2, x2, (+0)      # infinite loop
