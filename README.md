@@ -43,7 +43,7 @@ Some instructions are added / modified.
 5. [SystemVerilog: ビット長拡張（符号拡張）の書き方](https://nodamushi.hatenablog.com/entry/2018/12/03/233840)
    - `bcomp.sv`作成時に参考にした
 6. [Amano Lab.](https://www.am.ics.keio.ac.jp/parthenon/)
-7. 
+7. [コンピュータ構成と設計 / Computer Organization and Design](https://yamin.cis.k.hosei.ac.jp/lectures/cod/)
 
 ## 疑問点
 ![time_delay_PC](img/time_delay_PC.png)
@@ -59,6 +59,8 @@ Some instructions are added / modified.
 - aludec.svは不要？
   - funct3をそのままALUの制御信号にできそう
   - Harris&HarrisではALUControlという信号名で置き換えているがfunct3のままの方が分岐命令のときもわかりやすい
+
+- jalrで&(~1)をとって最下位bitを0にするべきか？
 
 ## メモ
 ### 7/26

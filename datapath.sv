@@ -14,7 +14,7 @@ module datapath(input  logic        clk, reset,
     logic [31:0] SrcA, SrcB;
     logic [31:0] Result;
     logic  [2:0] funct3;
-    logic        PCSrc;
+    logic  [1:0] PCSrc;
 
     assign funct3 = Instr[14:12];
 
@@ -25,7 +25,7 @@ module datapath(input  logic        clk, reset,
     flopr #(32) pcreg(clk, reset, PCNext, PC);
     adder       pcadd4(PC, 32'd4, PCPlus4);
     adder       pcaddbranch(PC, ImmExt, PCTarget);
-    mux2 #(32)  pcmux(PCPlus4, PCTarget, PCSrc, PCNext);
+    mux3 #(32)  pcmux(PCPlus4, PCTarget, 32'b0, PCSrc, PCNext);  // ここにjalr用のアドレスを追加
 
     // register file logic
     regfile     rf(.clk(clk), .we3(RegWrite),
