@@ -2,7 +2,7 @@
 
 module alu (
     input  logic [31:0] src1, src2,
-    input  logic [2:0]   alu_ctrl,
+    input  logic [3:0]   alu_ctrl,
     input  logic         ext, addcom,  // addcomはI命令のとき1
     output logic [31:0]  alu_out,
     output logic         zero
@@ -16,11 +16,8 @@ module alu (
         if (addcom) alu_out = src1 + src2;
         else begin
             case(alu_ctrl)
-                `ALU_ADD:  if (ext) begin
-                            alu_out = sub;
-                        end else begin
-                            alu_out = src1 + src2;
-                        end
+                `ALU_ADD:  alu_out = src1 + src2;
+                `ALU_SUB:  alu_out = sub;
                 `ALU_AND:  alu_out = src1 & src2;
                 `ALU_OR :  alu_out = src1 | src2;
                 `ALU_XOR:  alu_out = src1 ^ src2;

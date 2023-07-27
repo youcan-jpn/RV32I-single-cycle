@@ -6,7 +6,7 @@ module riscvsingle(input  logic        clk, reset,
                    input  logic [31:0] ReadData);
     logic       ALUsrc, RegWrite, Jump, Zero, Branch;
     logic [1:0] ResultSrc, ImmSrc;
-    logic [2:0] ALUControl;
+    logic [3:0] ALUControl;
 
     controller c(.op(Instr[6:0]), .funct3(Instr[14:12]),
                  .funct7b5(Instr[30]), .Zero(Zero),
@@ -16,7 +16,7 @@ module riscvsingle(input  logic        clk, reset,
     datapath  dp(.clk(clk), .reset(reset),
                  .ResultSrc(ResultSrc), .Branch(Branch),
                  .ALUSrc(ALUSrc), .RegWrite(RegWrite),
-                 .ImmSrc(ImmSrc), .funct3(ALUControl),
+                 .ImmSrc(ImmSrc), .ALUControl(ALUControl),
                  .Zero(Zero), .PC(PC), .Instr(Instr),
                  .ALUResult(ALUResult), .WriteData(WriteData),
                  .ReadData(ReadData));
