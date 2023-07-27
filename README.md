@@ -9,19 +9,25 @@ $ vvp a.out
 - R-type
   - `add`, `sub`, `and`, `or`, `slt`, `xor`, `srl`, `sra`, `sll`
 - I-type
-  - `lw`, `sw`, `addi`, `andi`, `ori`, `xori`, `srli`, `srai`, `slli`
+  - `lw`, `addi`, `andi`, `ori`, `xori`, `srli`, `srai`, `slli`
 - B-type
   - `beq`
 - J-type
   - `jal`
+- S-type
+  - `sw`
 
 ## Unimplement Instructions
 - R-type
   - `sltu`
 - I-type
   - `lb`, `lh`, `lbu`, `lhu`, `slti`, `sltiu`, `jalr`
+- B-type
+  - `bne`, `blt`, `bge`, `bltu`, `bgeu`
 - U-type
   - `auipc`, `lui`
+- S-type
+  - `sh`, `sb`
 
 
 ## About testbench
