@@ -4,7 +4,6 @@ module datapath(input  logic        clk, reset,
                 input  logic        RegWrite,
                 input  logic [2:0]  ImmSrc,
                 input  logic [3:0]  ALUControl,
-                output logic        Zero,
                 output logic [31:0] PC,
                 input  logic [31:0] Instr,
                 output logic [31:0] ALUResult, WriteData,
@@ -21,7 +20,7 @@ module datapath(input  logic        clk, reset,
     assign PC_jalr = {ALUResult[31:1], 1'b0};
 
     // branch logic
-    bcomp       bc(.a(regData), .b(SrcB), .comp_ctrl(funct3), .Branch(Branch), .Jump, .Jalr, .PCSrc);
+    bcomp       bc(.a(regData), .b(SrcB), .comp_ctrl(funct3), .Branch, .Jump, .Jalr, .PCSrc);
 
     // next PC logic
     flopr #(32) pcreg(clk, reset, PCNext, PC);
@@ -30,7 +29,7 @@ module datapath(input  logic        clk, reset,
     mux3 #(32)  pcmux(.d0(PCPlus4), .d1(PCTarget), .d2(PC_jalr), .s(PCSrc), .y(PCNext));  // ここにjalr用のアドレスを追加
 
     // register file logic
-    regfile     rf(.clk(clk), .we3(RegWrite),
+    regfile     rf(.clk, .we3(RegWrite),
                    .a1(Instr[19:15]), .a2(Instr[24:20]),
                    .a3(Instr[11:7]), .wd3(Result),
                    .rd1(regData), .rd2(WriteData));
@@ -45,7 +44,6 @@ module datapath(input  logic        clk, reset,
                     .src2(SrcB),
                     .alu_ctrl(ALUControl),
                     .ext(Instr[30]),
-                    .alu_out(ALUResult),
-                    .zero(Zero));
+                    .alu_out(ALUResult));
     mux4 #(32)  resultmux(ALUResult, ReadData, PCPlus4, ImmExt, ResultSrc, Result);
 endmodule

@@ -4,8 +4,7 @@ module alu (
     input  logic [31:0] src1, src2,
     input  logic [3:0]   alu_ctrl,
     input  logic         ext,
-    output logic [31:0]  alu_out,
-    output logic         zero
+    output logic [31:0]  alu_out
 );
     logic [31:0] sub;
     logic [4:0]  shamt;
@@ -32,5 +31,4 @@ module alu (
             default:   alu_out = 32'bx;
         endcase
     end
-    assign zero = alu_out == 0;
 endmodule
