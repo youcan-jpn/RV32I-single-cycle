@@ -4,7 +4,7 @@ module top(input  logic        clk, reset,
     logic [31:0] PC, Instr, ReadData;
 
     // instantiate processor and memories
-    riscvsingle rvsingle(clk, reset, PC, Instr, MemWrite, DataAdr, WriteData, ReadData);
+    riscvsingle rvsingle(.clk, .reset, .PC, .Instr, .MemWrite, .ALUResult(DataAdr), .WriteData, .ReadData);
     imem imem(PC, Instr);
-    dmem dmem(clk, MemWrite, DataAdr, WriteData, ReadData);
+    dmem dmem(.clk, .we(MemWrite), .a(DataAdr), .wd(WriteData), .rd(ReadData), .mode(Instr[14:12]));
 endmodule

@@ -15,3 +15,7 @@
 `define COMP_GE  3'b011
 `define COMP_LTU 3'b100
 `define COMP_GEU 3'b101
+
+`define MEM_SW   3'b010
+`define MEM_SH   3'b001
+`define MEM_SB   3'b000

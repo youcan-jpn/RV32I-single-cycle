@@ -15,15 +15,13 @@ $ vvp a.out
 - J-type
   - `jal`
 - S-type
-  - `sw`
+  - `sw`, `sh`, `sb`
 - U-type
   - `lui`, `auipc`
 
 ## Unimplement Instructions
 - I-type
   - `lb`, `lh`, `lbu`, `lhu`
-- S-type
-  - `sh`, `sb`
 
 
 ## About testbench
