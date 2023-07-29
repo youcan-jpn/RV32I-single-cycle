@@ -26,7 +26,7 @@ module datapath(input  logic        clk, reset,
     flopr #(32) pcreg(clk, reset, PCNext, PC);
     adder       pcadd4(PC, 32'd4, PCPlus4);
     adder       pcaddbranch(PC, ImmExt, PCTarget);
-    mux3 #(32)  pcmux(.d0(PCPlus4), .d1(PCTarget), .d2(PC_jalr), .s(PCSrc), .y(PCNext));  // ここにjalr用のアドレスを追加
+    mux3 #(32)  pcmux(.d0(PCPlus4), .d1(PCTarget), .d2(PC_jalr), .s(PCSrc), .y(PCNext));
 
     // register file logic
     regfile     rf(.clk, .we3(RegWrite),

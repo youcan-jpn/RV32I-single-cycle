@@ -6,6 +6,6 @@ module dmem(input  logic clk, we,
     assign rd = RAM[a[31:2]]; // word aligned
 
     always_ff @(posedge clk) begin
-        if (we) RAM[a[31:2]] <= wd;
+        if (we) RAM[a[31:2]][31:0] <= wd;
     end
 endmodule

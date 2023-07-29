@@ -27,7 +27,6 @@ module alu (
                     end else begin
                         alu_out = src1 >> shamt;
                     end
-            // `ALU_SR : alu_out = 7;
             default:   alu_out = 32'bx;
         endcase
     end

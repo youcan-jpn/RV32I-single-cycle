@@ -9,7 +9,7 @@ module regfile(
     logic [31:0] rf[31:0];
 
     always_ff @(posedge clk) begin
-        if (we3) rf[a3] <= wd3;
+        if (we3) rf[a3][31:0] <= wd3;
     end
 
     assign rd1 = (a1 != 0) ? rf[a1] : 0;  // the value $0 is always 0
