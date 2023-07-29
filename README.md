@@ -17,13 +17,11 @@ $ vvp a.out
 - S-type
   - `sw`
 - U-type
-  - `lui`
+  - `lui`, `auipc`
 
 ## Unimplement Instructions
 - I-type
   - `lb`, `lh`, `lbu`, `lhu`
-- U-type
-  - `auipc`
 - S-type
   - `sh`, `sb`
 

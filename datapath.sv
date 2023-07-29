@@ -1,6 +1,6 @@
 module datapath(input  logic        clk, reset,
                 input  logic [1:0]  ResultSrc,
-                input  logic        Branch, Jump, ALUSrc, Jalr,
+                input  logic        Branch, Jump, ALUSrcA, ALUSrcB, Jalr,
                 input  logic        RegWrite,
                 input  logic [2:0]  ImmSrc,
                 input  logic [3:0]  ALUControl,
@@ -11,6 +11,7 @@ module datapath(input  logic        clk, reset,
                 input  logic [31:0] ReadData);
     logic [31:0] PCNext, PCPlus4, PCTarget, PC_jalr;
     logic [31:0] ImmExt;
+    logic [31:0] regData;
     logic [31:0] SrcA, SrcB;
     logic [31:0] Result;
     logic  [2:0] funct3;
@@ -20,7 +21,7 @@ module datapath(input  logic        clk, reset,
     assign PC_jalr = {ALUResult[31:1], 1'b0};
 
     // branch logic
-    bcomp       bc(.a(SrcA), .b(SrcB), .comp_ctrl(funct3), .Branch(Branch), .Jump, .Jalr, .PCSrc);
+    bcomp       bc(.a(regData), .b(SrcB), .comp_ctrl(funct3), .Branch(Branch), .Jump, .Jalr, .PCSrc);
 
     // next PC logic
     flopr #(32) pcreg(clk, reset, PCNext, PC);
@@ -32,13 +33,14 @@ module datapath(input  logic        clk, reset,
     regfile     rf(.clk(clk), .we3(RegWrite),
                    .a1(Instr[19:15]), .a2(Instr[24:20]),
                    .a3(Instr[11:7]), .wd3(Result),
-                   .rd1(SrcA), .rd2(WriteData));
+                   .rd1(regData), .rd2(WriteData));
     extend      ext(.instr(Instr[31:7]),
                     .immsrc(ImmSrc),
                     .immext(ImmExt));
 
     // ALU logic
-    mux2 #(32)  srcbmux(WriteData, ImmExt, ALUSrc, SrcB);
+    mux2 #(32)  srcamux(regData, PC, ALUSrcA, SrcA);
+    mux2 #(32)  srcbmux(WriteData, ImmExt, ALUSrcB, SrcB);
     alu         alu(.src1(SrcA),
                     .src2(SrcB),
                     .alu_ctrl(ALUControl),
