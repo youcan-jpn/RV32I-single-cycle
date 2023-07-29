@@ -12,7 +12,7 @@ module extend(input  logic [31:7] instr,
             // J-type (jal)
             3'b011:  immext = {{12{instr[31]}}, instr[19:12], instr[20], instr[30:21], 1'b0};
             // U-type
-            // TODO
+            3'b100:  immext = {instr[31:12], 11'b0};
             default: immext = 32'b0; // undefined
         endcase
 endmodule

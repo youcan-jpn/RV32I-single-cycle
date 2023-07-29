@@ -1,7 +1,7 @@
 # single-cycle-processor-riscv
 
 ```bash
-$ iverilog -g2012 adder.sv alu.sv aludec.sv controller.sv datapath.sv dmem.sv extend.sv flopenr.sv flopr.sv imem.sv maindecoder.sv mux2.sv mux3.sv regfile.sv riscvsingle.sv testbench.sv top.sv bcomp.sv
+$ iverilog -g2012 adder.sv alu.sv aludec.sv controller.sv datapath.sv dmem.sv extend.sv flopenr.sv flopr.sv imem.sv maindecoder.sv mux2.sv mux3.sv mux4.sv regfile.sv riscvsingle.sv testbench.sv top.sv bcomp.sv
 $ vvp a.out
 ```
 
@@ -16,12 +16,14 @@ $ vvp a.out
   - `jal`
 - S-type
   - `sw`
+- U-type
+  - `lui`
 
 ## Unimplement Instructions
 - I-type
   - `lb`, `lh`, `lbu`, `lhu`
 - U-type
-  - `auipc`, `lui`
+  - `auipc`
 - S-type
   - `sh`, `sb`
 

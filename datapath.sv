@@ -45,5 +45,5 @@ module datapath(input  logic        clk, reset,
                     .ext(Instr[30]),
                     .alu_out(ALUResult),
                     .zero(Zero));
-    mux3 #(32)  resultmux(ALUResult, ReadData, PCPlus4, ResultSrc, Result);
+    mux4 #(32)  resultmux(ALUResult, ReadData, PCPlus4, ImmExt, ResultSrc, Result);
 endmodule
