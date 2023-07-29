@@ -9,7 +9,7 @@ $ vvp a.out
 - R-type
   - `add`, `sub`, `and`, `or`, `slt`, `sltu`, `xor`, `srl`, `sra`, `sll`, `jalr`
 - I-type
-  - `lw`, `addi`, `andi`, `ori`, `xori`, `srli`, `srai`, `slli`, `slti`, `sltiu`,
+  - `lw`, `lb`, `lh`, `lbu`, `lhu`, `addi`, `andi`, `ori`, `xori`, `srli`, `srai`, `slli`, `slti`, `sltiu`,
 - B-type
   - `beq`, `bne`, `blt`, `bge`, `bltu`, `bgeu`
 - J-type
@@ -20,9 +20,8 @@ $ vvp a.out
   - `lui`, `auipc`
 
 ## Unimplement Instructions
-- I-type
-  - `lb`, `lh`, `lbu`, `lhu`
-
+- CSR instructions
+  - `ecall`, `ebreak`, `uret`, `sret`, `mret`, `csrrw`, `csrrs`, `csrrc`, `csrrwi`, `csrrsi`, `csrrci`
 
 ## About testbench
 `riscvtest.txt` is based on Harris&Harris.

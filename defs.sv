@@ -19,3 +19,9 @@
 `define MEM_SW   3'b010
 `define MEM_SH   3'b001
 `define MEM_SB   3'b000
+
+`define MEM_LB   3'b000
+`define MEM_LH   3'b001
+`define MEM_LW   3'b010
+`define MEM_LHU  3'b101
+`define MEM_LBU  3'b100
