@@ -26,21 +26,34 @@ module testbench();
     always @(negedge clk)
         begin
             if (MemWrite) begin
-                if (DataAdr === 32 & WriteData === 25) begin
-                    $display("Simulation succeeded");
-                    $stop;
-                end else if (DataAdr === 96 & WriteData === 7) begin
-                    $display("Pass checkpoint-1");
-                end else if (DataAdr === 96 & WriteData !== 7) begin
+                // if (DataAdr === 32 & WriteData === 25) begin
+                //     $display("Simulation succeeded");
+                //     $stop;
+                // end else if (DataAdr === 96 & WriteData === 7) begin
+                //     $display("Pass checkpoint-1");
+                // end else if (DataAdr === 96 & WriteData !== 7) begin
+                //     $display("DataAdr: %d", DataAdr);
+                //     $display("WriteData: %d", WriteData);
+                //     $display("Simulation failed at sw x7");
+                //     // $stop;
+                // end else if (DataAdr !== 96) begin
+                //     $display("DataAdr: %d", DataAdr);
+                //     $display("WriteData: %d", WriteData);
+                //     $display("Simulation failed");
+                //     $stop;
+                // end
+                if (DataAdr === 32 && WriteData === 1) begin
+                    $display("PASS");
+                    $finish;
+                end else if (DataAdr === 32 && WriteData === 0) begin
+                    $display("FAIL");
+                    $finish;
+                end else begin
+                    $display("Unknown MemWrite")
                     $display("DataAdr: %d", DataAdr);
                     $display("WriteData: %d", WriteData);
-                    $display("Simulation failed at sw x7");
-                    // $stop;
-                end else if (DataAdr !== 96) begin
-                    $display("DataAdr: %d", DataAdr);
-                    $display("WriteData: %d", WriteData);
-                    $display("Simulation failed");
-                    $stop;
+                    $display("FAIL");
+                    $finish;
                 end
             end
         end
