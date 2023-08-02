@@ -19,11 +19,10 @@ module alu (
             `ALU_OR :  alu_out = src1 | src2;
             `ALU_XOR:  alu_out = src1 ^ src2;
             `ALU_SLT:  alu_out = {{31{1'b0}}, sub[31]};
-            `ALU_SLTU: alu_out = src1 < src2;  // これで合ってる？
+            `ALU_SLTU: alu_out = src1 < src2;
             `ALU_SL :  alu_out = src1 << shamt;
             `ALU_SR :  if (ext) begin
-                        alu_out = src1 >>> shamt;
-                        // alu_out = {{shamt{src[31]}}, src[31:shamt+1]}
+                        alu_out = $signed(src1) >>> shamt;
                     end else begin
                         alu_out = src1 >> shamt;
                     end
