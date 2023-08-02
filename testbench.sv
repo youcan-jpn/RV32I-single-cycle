@@ -49,7 +49,7 @@ module testbench();
                     $display("FAIL");
                     $finish;
                 end else begin
-                    $display("Unknown MemWrite")
+                    $display("Unknown MemWrite");
                     $display("DataAdr: %d", DataAdr);
                     $display("WriteData: %d", WriteData);
                     $display("FAIL");
