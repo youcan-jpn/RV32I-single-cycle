@@ -23,27 +23,28 @@ $ vvp a.out
 - R-type
   - `add`, `sub`, `sltu`, `srl`, `sra`, `sll`, `and`, `or`, `slt`
 - I-type
-  - `addi`, `andi`, `xor`, `lw`, `ori`, `xori`, `srli`, `srai`, `slli`, `slti`, `sltiu`
+  - `addi`, `andi`, `xor`, `lw`, `ori`, `xori`, `srli`, `srai`, `slli`, `slti`, `sltiu`, `lh`, `lhu`
 - B-type
   - `beq`, `bne`
 - J-type
   - `jal`
 - S-type
-  - `sw`
+  - `sw`, `sh`
 - U-type
+  - `lui`
 
 
 ## Untested Instructions
 - R-type
   - `jalr`
 - I-type
-  - `lb`, `lh`, `lbu`, `lhu`
+  - `lb`, `lbu`
 - B-type
   - `blt`, `bge`, `bltu`, `bgeu`
 - S-type
-  - `sh`, `sb`
+  - `sb`
 - U-type
-  - `lui`, `auipc`
+  - `auipc`
 
 ## About testbench
 original tests are located in `tests/`.

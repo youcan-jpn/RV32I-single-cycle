@@ -26,6 +26,7 @@ module testbench();
     always @(negedge clk)
         begin
             if (MemWrite) begin
+                // for tests/harris.hex
                 // if (DataAdr === 32 & WriteData === 25) begin
                 //     $display("Simulation succeeded");
                 //     $stop;
@@ -42,12 +43,17 @@ module testbench();
                 //     $display("Simulation failed");
                 //     $stop;
                 // end
+                // for other tests/*.hex files
                 if (DataAdr === 32 && WriteData === 1) begin
                     $display("PASS");
                     $finish;
                 end else if (DataAdr === 32 && WriteData === 0) begin
                     $display("FAIL");
                     $finish;
+                end else if (DataAdr === 16) begin
+                    $display("store half");
+                    // Do Nothing
+                    // for `sh` instruction
                 end else begin
                     $display("Unknown MemWrite");
                     $display("DataAdr: %d", DataAdr);
