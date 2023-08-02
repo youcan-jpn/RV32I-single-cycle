@@ -21,9 +21,9 @@ $ vvp a.out
 
 ## Tested Instructions
 - R-type
-  - `add`, `sub`
+  - `add`, `sub`, `sltu`, `srl`, `sra`, `sll`
 - I-type
-  - `addi`
+  - `addi`, `andi`, `xor`
 - B-type
   - `beq`, `bne`
 - J-type
@@ -34,9 +34,9 @@ $ vvp a.out
 
 ## Untested Instructions
 - R-type
-  - `and`, `or`, `slt`, `sltu`, `xor`, `srl`, `sra`, `sll`, `jalr`
+  - `and`, `or`, `slt`, `jalr`
 - I-type
-  - `lw`, `lb`, `lh`, `lbu`, `lhu`, `andi`, `ori`, `xori`, `srli`, `srai`, `slli`, `slti`, `sltiu`,
+  - `lw`, `lb`, `lh`, `lbu`, `lhu`, `ori`, `xori`, `srli`, `srai`, `slli`, `slti`, `sltiu`,
 - B-type
   - `blt`, `bge`, `bltu`, `bgeu`
 - J-type
