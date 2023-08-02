@@ -21,11 +21,11 @@ $ vvp a.out
 
 ## Tested Instructions
 - R-type
-  - `add`
+  - `add`, `sub`
 - I-type
   - `addi`
 - B-type
-  - `beq`
+  - `beq`, `bne`
 - J-type
 - S-type
   - `sw`
@@ -34,15 +34,15 @@ $ vvp a.out
 
 ## Untested Instructions
 - R-type
-  - `add`, `sub`, `and`, `or`, `slt`, `sltu`, `xor`, `srl`, `sra`, `sll`, `jalr`
+  - `and`, `or`, `slt`, `sltu`, `xor`, `srl`, `sra`, `sll`, `jalr`
 - I-type
-  - `lw`, `lb`, `lh`, `lbu`, `lhu`, `addi`, `andi`, `ori`, `xori`, `srli`, `srai`, `slli`, `slti`, `sltiu`,
+  - `lw`, `lb`, `lh`, `lbu`, `lhu`, `andi`, `ori`, `xori`, `srli`, `srai`, `slli`, `slti`, `sltiu`,
 - B-type
-  - `beq`, `bne`, `blt`, `bge`, `bltu`, `bgeu`
+  - `blt`, `bge`, `bltu`, `bgeu`
 - J-type
   - `jal`
 - S-type
-  - `sw`, `sh`, `sb`
+  - `sh`, `sb`
 - U-type
   - `lui`, `auipc`
 
@@ -63,7 +63,7 @@ These tests distinguish test results by write data on memory[32] (1: PASS, 0, FA
 2. [riscv-gnu-toolchain](https://github.com/riscv-collab/riscv-gnu-toolchain)
 3. [riscv-tests](https://github.com/riscv-software-src/riscv-tests)
 4. [RISC-V CONVERTER](https://www.eg.bucknell.edu/~csci206/riscv-converter/index.html#)
-  - ATTENTION: conversion of `sw`, `beq` does NOT work correctly
+  - ATTENTION: conversion of `sw`, `beq`, `bne` does NOT work correctly
 5. [計算機構成 第6回 RV32Iのマイクロアーキテクチャ](https://www.am.ics.keio.ac.jp/parthenon/rvmicro.pdf)
 6. [Verilog-HDLで算術右シフトを書く方法](https://hikalium.hatenablog.jp/entry/2017/07/10/091146)
 7. [SystemVerilog: ビット長拡張（符号拡張）の書き方](https://nodamushi.hatenablog.com/entry/2018/12/03/233840)
