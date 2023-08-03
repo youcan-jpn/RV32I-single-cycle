@@ -48,14 +48,14 @@
 @002d 0042D863  // bge  x5,  x4, +16     # jump to FAIL if x5 >= x4
 @002e 0042E663  // bltu x5,  x4, +12     # jump to FAIL if u(x5) < u(x4)
 @002f 00517463  // bgeu x2,  x5, +8      # jump to FAIL if u(x2) >= u(x5)
-// @0030 00800567  // jalr x10, x0, +8      # jump to PASS : this doesn't work
-// @0030 00508567  // jalr x10, x1, 5       # jump to PASS (x1 + 5 = +8) : this doesn't work
-@0030 0080056F  // jal x10, +8
+// @0030 0C800567  // jalr x10, x0, +200    # jump to PASS
+@0030 0C508567  // jalr x10, x1, +197       # jump to PASS (x1 + 197 = 200)
+// @0030 0080056F  // jal x10, +8
 
 
 // FAIL
-// @0031 00302023  // temp
-@0031 03E02023  // sw x30, 32(x0)        # [32] = 0
+@0031 00A02023  // sw x10, 0(x0) # [0] = x10  :temp
+//@0031 03E02023  // sw x30, 32(x0)        # [32] = 0
 
 // PASS
 @0032 03F02023  // sw x31, 32(x0)        # [32] = 1
