@@ -6,19 +6,13 @@ module bcomp #(parameter N = 32)
                      input  logic        Branch, Jump, Jalr,
                      output logic [1:0]  PCSrc);
     logic eq, neq, lt, ltu, ge, geu;
-    logic [N-1:0] au, as, bu, bs;
-
-    assign au = $unsigned(a);
-    assign as = $signed(a);
-    assign bu = $unsigned(b);
-    assign bs = $signed(a);
 
     assign eq  = (a === b);
     assign neq = (a !== b);
-    assign lt  = (as < bs);
-    assign ltu = (au < bu);
-    assign ge  = (as >= bs);
-    assign geu = (au >= bu);
+    assign lt  = ($signed(a) < $signed(b));
+    assign ltu = (a < b);
+    assign ge  = ($signed(a) >= $signed(b));
+    assign geu = (a >= b);
 
     always_comb begin
         if (Jump) begin

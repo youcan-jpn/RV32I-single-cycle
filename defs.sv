@@ -11,10 +11,10 @@
 
 `define COMP_EQ  3'b000
 `define COMP_NE  3'b001
-`define COMP_LT  3'b010
-`define COMP_GE  3'b011
-`define COMP_LTU 3'b100
-`define COMP_GEU 3'b101
+`define COMP_LT  3'b100
+`define COMP_GE  3'b101
+`define COMP_LTU 3'b110
+`define COMP_GEU 3'b111
 
 `define MEM_SW   3'b010
 `define MEM_SH   3'b001
