@@ -25,7 +25,7 @@ $ vvp a.out
 - I-type
   - `addi`, `andi`, `xor`, `lw`, `ori`, `xori`, `srli`, `srai`, `slli`, `slti`, `sltiu`, `lh`, `lhu`
 - B-type
-  - `beq`, `bne`
+  - `beq`, `bne`, `blt`, `bge`, `bltu`, `bgeu`
 - J-type
   - `jal`
 - S-type
@@ -36,11 +36,9 @@ $ vvp a.out
 
 ## Untested Instructions
 - R-type
-  - `jalr`
+  - `jalr` (may have a bug)
 - I-type
   - `lb`, `lbu`
-- B-type
-  - `blt`, `bge`, `bltu`, `bgeu`
 - S-type
   - `sb`
 - U-type
